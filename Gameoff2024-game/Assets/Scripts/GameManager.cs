@@ -12,10 +12,7 @@ public class GameManager : MonoBehaviour
     {
         if(instance == null) instance = this;
         else Destroy(this);
-    }
 
-    void Start()
-    {
         playerGO = GameObject.FindWithTag("Player");
         playerTransform = playerGO.transform;
     }
