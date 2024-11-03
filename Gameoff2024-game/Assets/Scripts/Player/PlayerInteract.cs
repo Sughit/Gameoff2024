@@ -14,7 +14,7 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyUp(KeyCode.E))
         {
             Collider[] col = Physics.OverlapSphere(transform.position, interactRange, interactLayer);
             if(col.Length > 0)

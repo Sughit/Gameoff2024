@@ -1,11 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] private float fov = 30f, viewDistance = 10f;
     Transform playerTransfrom;
+    public enum EnemyState
+    {
+        idle,
+        patroling, 
+        following,
+        attacking
+    };
+    EnemyState enemyState;
+    NavMeshAgent nav;
+
+    void Start()
+    {
+        nav = GetComponent<NavMeshAgent>();
+    }
 
     void Update()
     {
@@ -25,6 +40,8 @@ public class EnemyScript : MonoBehaviour
                     if(hit.collider.gameObject.tag == "Player")
                     {
                         Debug.Log("Vedem player");
+                        enemyState = EnemyState.following;
+                        nav.destination = playerTransfrom.position;
                     }
                 }
             }
@@ -34,6 +51,7 @@ public class EnemyScript : MonoBehaviour
     public void CheckPlace(Vector3 pos)
     {
         Debug.Log(pos);
+        nav.destination = pos;
     }
 
     void OnDrawGizmosSelected()

@@ -79,7 +79,7 @@ MonoBehaviour:
   explosion: {fileID: 1494083766182838, guid: 151b49b11ab5924429acc76ead6435fa, type: 3}
   isPickedUp: 0
   timeToExplode: 2
-  throwForce: 10
+  throwForce: 1
 --- !u!1 &5525653481923569455
 GameObject:
   m_ObjectHideFlags: 0

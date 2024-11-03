@@ -35,7 +35,7 @@ public class Grenade : MonoBehaviour, IInteractable
         if(!isPickedUp) return;
         else
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKey(KeyCode.E))
             {
                 transform.parent = null;
                 rb.AddForce(playerTransform.forward * throwForce, ForceMode.VelocityChange);
