@@ -10,10 +10,10 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         if(playerTransfrom == null) playerTransfrom = GameManager.instance.playerTransform;
-        else TryFindPlayer();
+        else TrySeePlayer();
     }
 
-    void TryFindPlayer()
+    void TrySeePlayer()
     {
         if(Vector3.Distance(transform.position, playerTransfrom.position) < viewDistance)
         {
@@ -29,6 +29,11 @@ public class EnemyScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CheckPlace(Vector3 pos)
+    {
+        Debug.Log(pos);
     }
 
     void OnDrawGizmosSelected()

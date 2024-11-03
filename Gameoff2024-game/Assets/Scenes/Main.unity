@@ -1434,6 +1434,9 @@ MonoBehaviour:
   walkingRange: 2
   runningRange: 4
   crouchingRange: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &1033079625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,7 +1466,7 @@ GameObject:
   - component: {fileID: 1327127830}
   - component: {fileID: 1327127829}
   - component: {fileID: 1327127828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
