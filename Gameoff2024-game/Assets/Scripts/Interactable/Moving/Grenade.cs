@@ -8,7 +8,7 @@ public class Grenade : MonoBehaviour, IInteractable
     [SerializeField] bool isPickedUp = false;
     [SerializeField] float timeToExplode = 2f;
     [SerializeField] float throwForce = 10f;
-    GameObject player;
+    Transform playerTransform;
     Rigidbody rb;
 
     public void Interact()
@@ -18,7 +18,7 @@ public class Grenade : MonoBehaviour, IInteractable
         if(!isPickedUp)
         {
             isPickedUp = true;
-            transform.SetParent(player.transform.GetChild(0).transform);
+            transform.SetParent(playerTransform.GetChild(0).transform);
             rb.velocity = Vector3.zero;
             transform.localPosition = Vector3.zero;
         }
@@ -26,8 +26,8 @@ public class Grenade : MonoBehaviour, IInteractable
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody>();
+        playerTransform = GameManager.instance.playerTransform;
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class Grenade : MonoBehaviour, IInteractable
             if(Input.GetKeyDown(KeyCode.E))
             {
                 transform.parent = null;
-                rb.AddForce(player.transform.forward * throwForce, ForceMode.VelocityChange);
+                rb.AddForce(playerTransform.forward * throwForce, ForceMode.VelocityChange);
                 Invoke("Explode", timeToExplode);
             }
         }

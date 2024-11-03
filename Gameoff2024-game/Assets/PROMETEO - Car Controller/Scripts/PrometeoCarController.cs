@@ -151,11 +151,13 @@ public class PrometeoCarController : MonoBehaviour, IInteractable
     //Variabilele noastre  
       public bool canDrive = false;
       public GameObject cam;
-      GameObject player;
+      GameObject playerGO;
+      Transform playerTransform;
 
     void Start()
     {
-      player = GameObject.FindWithTag("Player");
+      playerGO = GameManager.instance.playerGO;
+      playerTransform = GameManager.instance.playerTransform;
 
       //In this part, we set the 'carRigidbody' value with the Rigidbody attached to this
       //gameObject. Also, we define the center of mass of the car with the Vector3 given
@@ -261,7 +263,7 @@ public class PrometeoCarController : MonoBehaviour, IInteractable
     public void Interact()
     {
       canDrive = true;
-      player.SetActive(false);
+      playerGO.SetActive(false);
       cam.SetActive(true);
     }
 
@@ -273,8 +275,8 @@ public class PrometeoCarController : MonoBehaviour, IInteractable
         if(Input.GetKeyDown(KeyCode.E))
         {
           canDrive = false;
-          player.transform.position = new Vector3(transform.position.x - 1, 0, 0);
-          player.SetActive(true);
+          playerTransform.position = new Vector3(transform.position.x - 1, 0, 0);
+          playerGO.SetActive(true);
           cam.SetActive(false);
         }
       }
